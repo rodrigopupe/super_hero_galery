@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'src/controllers/home_controller.dart';
+import 'src/pages/home/home_page.dart';
 import 'src/repositories/super_hero_repository_impl.dart';
 import 'src/utils/theme_utils.dart';
-import 'src/pages/home/home_page.dart';
 
 void main() {
   runApp(MyApp());
