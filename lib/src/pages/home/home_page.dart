@@ -15,6 +15,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   HomeController _controller;
   AppLocale _locale;
+  TextEditingController _searchController;
+
+  @override
+  void initState() {
+    _searchController = TextEditingController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     _controller = Provider.of<HomeController>(context);
@@ -44,23 +52,72 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: Observer(
-        builder: (_) {
-          Widget result;
-          if (_controller.superHeroList.isEmpty) {
-            result = Container();
-          } else {
-            result = _drawList(_controller.superHeroList);
-          }
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    _locale.getString('search_box_label'),
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  SizedBox(height: 8.0),
+                  TextField(
+                    controller: _searchController,
+                    keyboardType: TextInputType.text,
+                    onChanged: _controller.updateFilter,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.search),
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.clear),
+                        onPressed: () {
+                          _searchController.clear();
+                          _controller.updateFilter(_searchController.text);
+                        },
+                      ),
+                      hintText: _locale.getString('search_box_hint'),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Observer(
+              builder: (_) {
+                Widget result;
+                if (_controller.filteredList.isEmpty) {
+                  if (_searchController.text.isNotEmpty) {
+                    result = Center(
+                        child: Text(
+                      _locale.getString('no_super_hero_found'),
+                      style: Theme.of(context).textTheme.headline4,
+                    ));
+                  } else {
+                    result = Container();
+                  }
+                } else {
+                  result = Observer(
+                    builder: (_) => Expanded(
+                      child: _drawList(_controller.filteredList),
+                    ),
+                  );
+                }
 
-          return result;
-        },
+                return result;
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget _drawList(List<SuperHeroModel> superHeroes) {
     return ListView.separated(
+      physics: BouncingScrollPhysics(),
       itemCount: superHeroes.length,
       separatorBuilder: (_, __) => Divider(),
       itemBuilder: (_, index) {

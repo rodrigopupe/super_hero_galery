@@ -20,6 +20,29 @@ abstract class _HomeControllerBase with Store {
   @computed
   bool get busy => superHeroList.length < _listSize;
 
+  @computed
+  List<SuperHeroModel> get filteredList {
+    if (filter.trim().length < 3) {
+      return superHeroList;
+    }
+
+    return superHeroList
+        .where((item) =>
+            item.name.toLowerCase().contains(filter.toLowerCase()) ||
+            item.biography.fullName.toLowerCase().contains(filter.toLowerCase()) ||
+            item.biography.alterEgos.toLowerCase().contains(filter.toLowerCase()) ||
+            item.work.occupation.toLowerCase().contains(filter.toLowerCase()) ||
+            item.biography.aliases.any(
+              (item) => item.toLowerCase().contains(
+                    filter.toLowerCase(),
+                  ),
+            ))
+        .toList();
+  }
+
+  @observable
+  String filter = '';
+
   @action
   getSuperHeroes() async {
     superHeroList.clear();
@@ -32,4 +55,7 @@ abstract class _HomeControllerBase with Store {
       print(e);
     }
   }
+
+  @action
+  updateFilter(String value) => filter = value;
 }

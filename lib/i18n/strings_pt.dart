@@ -1,6 +1,10 @@
 const Map<String, String> PORTUGUESE = {
   'app_title': 'Super Hero Galery',
 
+  'search_box_label': 'Nome, apelido ou ocupação:',
+  'search_box_hint': 'Sua busca aqui...',
+  'no_super_hero_found': 'Nenhum super herói encontrado',
+
   'not_available_text': '-',
 
   'power_stats_label': 'Estatísticas de poder',
@@ -18,7 +22,7 @@ const Map<String, String> PORTUGUESE = {
   'place_birth_label': 'Local de nascimento',
   'first_appearance_label': 'Primeira aparição',
   'publisher_label': 'Publicado por',
-  'alignment_label': 'Alinhamento',
+  'alignment_label': 'Conduta',
 
   'appearance_label': 'Aparência',
   'gender_label': 'Gênero',

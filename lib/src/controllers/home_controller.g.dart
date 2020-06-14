@@ -15,6 +15,13 @@ mixin _$HomeController on _HomeControllerBase, Store {
   bool get busy => (_$busyComputed ??=
           Computed<bool>(() => super.busy, name: '_HomeControllerBase.busy'))
       .value;
+  Computed<List<SuperHeroModel>> _$filteredListComputed;
+
+  @override
+  List<SuperHeroModel> get filteredList => (_$filteredListComputed ??=
+          Computed<List<SuperHeroModel>>(() => super.filteredList,
+              name: '_HomeControllerBase.filteredList'))
+      .value;
 
   final _$superHeroListAtom = Atom(name: '_HomeControllerBase.superHeroList');
 
@@ -31,6 +38,21 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  final _$filterAtom = Atom(name: '_HomeControllerBase.filter');
+
+  @override
+  String get filter {
+    _$filterAtom.reportRead();
+    return super.filter;
+  }
+
+  @override
+  set filter(String value) {
+    _$filterAtom.reportWrite(value, super.filter, () {
+      super.filter = value;
+    });
+  }
+
   final _$getSuperHeroesAsyncAction =
       AsyncAction('_HomeControllerBase.getSuperHeroes');
 
@@ -39,11 +61,27 @@ mixin _$HomeController on _HomeControllerBase, Store {
     return _$getSuperHeroesAsyncAction.run(() => super.getSuperHeroes());
   }
 
+  final _$_HomeControllerBaseActionController =
+      ActionController(name: '_HomeControllerBase');
+
+  @override
+  dynamic updateFilter(String value) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.updateFilter');
+    try {
+      return super.updateFilter(value);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 superHeroList: ${superHeroList},
-busy: ${busy}
+filter: ${filter},
+busy: ${busy},
+filteredList: ${filteredList}
     ''';
   }
 }
