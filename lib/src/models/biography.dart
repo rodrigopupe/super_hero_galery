@@ -1,4 +1,3 @@
-
 class Biography {
   String fullName;
   String alterEgos;

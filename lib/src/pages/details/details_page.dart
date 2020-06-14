@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:superherogalery/i18n/app_locale.dart';
 import 'package:superherogalery/src/models/super_hero_model.dart';
 import 'package:superherogalery/src/shared/custom_cached_network_image.dart';
 
@@ -13,9 +13,12 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
+  AppLocale _locale;
   @override
   Widget build(BuildContext context) {
+    _locale = AppLocale.of(context);
     final size = MediaQuery.of(context).size;
+    final double heightSpace = 8.0;
 
     return Scaffold(
       appBar: AppBar(
@@ -27,25 +30,330 @@ class _DetailsPageState extends State<DetailsPage> {
         ),
       ),
       body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, bottom: 16.0),
-            child: Text(
-              widget.superHero.name,
-              style: Theme.of(context).textTheme.headline1,
-            ),
+          Text(
+            widget.superHero.name,
+            style: Theme.of(context).textTheme.headline1,
           ),
-          Hero(
-            tag: widget.superHero.id,
-            child: Align(
-              alignment: Alignment.center,
-              child: CustomCachedNetworkImage(
-                width: size.height * 0.35,
-                height: size.height * 0.35,
-                imageUrl: widget.superHero.image.url,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Hero(
+              tag: widget.superHero.id,
+              child: Align(
+                alignment: Alignment.center,
+                child: CustomCachedNetworkImage(
+                  width: size.height * 0.35,
+                  height: size.height * 0.35,
+                  imageUrl: widget.superHero.image.url,
+                ),
               ),
             ),
-          )
+          ),
+          Text(
+            _locale.getString('power_stats_label'),
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('intelligence_label'))),
+                    Expanded(child: Text(widget.superHero.powerstats.intelligence)),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('strength_label'))),
+                    Expanded(child: Text(widget.superHero.powerstats.strength)),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('speed_label'))),
+                    Expanded(child: Text(widget.superHero.powerstats.speed)),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('durability_label'))),
+                    Expanded(child: Text(widget.superHero.powerstats.durability)),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('power_label'))),
+                    Expanded(child: Text(widget.superHero.powerstats.power)),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('combat_label'))),
+                    Expanded(child: Text(widget.superHero.powerstats.combat)),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Text(
+            _locale.getString('biography_label'),
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('fullname_label'))),
+                    Expanded(
+                      child: Text(
+                        widget.superHero.getFieldOrDefaultValue(
+                          widget.superHero.biography.fullName,
+                          _locale.getString('not_available_text'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('alter_egos_label'))),
+                    Expanded(child: Text(widget.superHero.biography.alterEgos)),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('aliases_label'))),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: List.generate(
+                          widget.superHero.biography.aliases.length,
+                          (i) => Text(widget.superHero.biography.aliases[i]),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('place_birth_label'))),
+                    Expanded(child: Text(widget.superHero.biography.placeOfBirth)),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('first_appearance_label'))),
+                    Expanded(
+                      child: Text(
+                        widget.superHero.getFieldOrDefaultValue(
+                          widget.superHero.biography.firstAppearance,
+                          _locale.getString('not_available_text'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('publisher_label'))),
+                    Expanded(
+                      child: Text(
+                        widget.superHero.getFieldOrDefaultValue(
+                          widget.superHero.biography.publisher,
+                          _locale.getString('not_available_text'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('alignment_label'))),
+                    Expanded(child: Text(widget.superHero.biography.alignment)),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Text(
+            _locale.getString('appearance_label'),
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('gender_label'))),
+                    Expanded(
+                      child: Text(
+                        widget.superHero.getFieldOrDefaultValue(
+                          widget.superHero.appearance.gender,
+                          _locale.getString('not_available_text'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('race_label'))),
+                    Expanded(child: Text(widget.superHero.appearance.race)),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('height_label'))),
+                    Expanded(child: Text(widget.superHero.appearance.height.last)),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('weight_label'))),
+                    Expanded(child: Text(widget.superHero.appearance.weight.last)),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('eye_color_label'))),
+                    Expanded(
+                      child: Text(
+                        widget.superHero.getFieldOrDefaultValue(
+                          widget.superHero.appearance.eyeColor,
+                          _locale.getString('not_available_text'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('hair_color_label'))),
+                    Expanded(
+                      child: Text(
+                        widget.superHero.getFieldOrDefaultValue(
+                          widget.superHero.appearance.hairColor,
+                          _locale.getString('not_available_text'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Text(
+            _locale.getString('work_label'),
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('occupation_label'))),
+                    Expanded(
+                      child: Text(
+                        widget.superHero.getFieldOrDefaultValue(
+                          widget.superHero.work.occupation,
+                          _locale.getString('not_available_text'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('base_label'))),
+                    Expanded(
+                      child: Text(
+                        widget.superHero.getFieldOrDefaultValue(
+                          widget.superHero.work.base,
+                          _locale.getString('not_available_text'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Text(
+            _locale.getString('connections_label'),
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('group_affiliation_label'))),
+                    Expanded(
+                      child: Text(
+                        widget.superHero.getFieldOrDefaultValue(
+                          widget.superHero.connections.groupAffiliation,
+                          _locale.getString('not_available_text'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: heightSpace),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(child: Text(_locale.getString('relatives_label'))),
+                    Expanded(
+                      child: Text(
+                        widget.superHero.getFieldOrDefaultValue(
+                          widget.superHero.connections.relatives,
+                          _locale.getString('not_available_text'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

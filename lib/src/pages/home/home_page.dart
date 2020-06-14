@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:superherogalery/i18n/app_locale.dart';
 
 import '../../controllers/home_controller.dart';
 import '../../models/super_hero_model.dart';
@@ -13,13 +14,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   HomeController _controller;
+  AppLocale _locale;
   @override
   Widget build(BuildContext context) {
     _controller = Provider.of<HomeController>(context);
+    _locale = AppLocale.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('SuperHeroGalery'),
+        title: Text(_locale.getString('app_title')),
         centerTitle: true,
         elevation: 0.0,
         actions: <Widget>[

@@ -64,4 +64,12 @@ class SuperHeroModel {
     }
     return data;
   }
+
+  String getFieldOrDefaultValue(String field, String defaultValue) {
+    if (field == 'null' || field.isEmpty || field.trim() == '-') {
+      return defaultValue;
+    }
+
+    return field;
+  }
 }
