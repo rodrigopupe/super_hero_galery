@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../controllers/home_controller.dart';
-import '../models/super_hero_model.dart';
+import '../../controllers/home_controller.dart';
+import '../../models/super_hero_model.dart';
 import 'components/super_hero_item.dart';
 
 class HomePage extends StatefulWidget {
