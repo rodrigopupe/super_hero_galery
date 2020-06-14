@@ -9,6 +9,13 @@ part of 'home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeController on _HomeControllerBase, Store {
+  Computed<bool> _$busyComputed;
+
+  @override
+  bool get busy => (_$busyComputed ??=
+          Computed<bool>(() => super.busy, name: '_HomeControllerBase.busy'))
+      .value;
+
   final _$superHeroListAtom = Atom(name: '_HomeControllerBase.superHeroList');
 
   @override
@@ -35,7 +42,8 @@ mixin _$HomeController on _HomeControllerBase, Store {
   @override
   String toString() {
     return '''
-superHeroList: ${superHeroList}
+superHeroList: ${superHeroList},
+busy: ${busy}
     ''';
   }
 }

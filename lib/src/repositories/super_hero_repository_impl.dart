@@ -10,7 +10,7 @@ class SuperHeroRepositoryImpl extends SuperHeroRepository {
   Future<SuperHeroModel> getSuperHeroes(int superHeroId) async {
     final path = "/$superHeroId";
     Response response = await client.get(path);
-    if (response.statusCode != 200) {
+    if (response.statusCode >= 400) {
       throw DioError(request: response.request, response: response);
     }
 
