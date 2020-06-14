@@ -31,6 +31,7 @@ class _DetailsPageState extends State<DetailsPage> {
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        physics: BouncingScrollPhysics(),
         children: <Widget>[
           Text(
             widget.superHero.name,
@@ -60,42 +61,75 @@ class _DetailsPageState extends State<DetailsPage> {
               children: <Widget>[
                 Row(
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('intelligence_label'))),
+                    Expanded(
+                      child: Text(
+                        _locale.getString('intelligence_label'),
+                        style: Theme.of(context)
+                            .textTheme
+                            .caption
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ),
                     Expanded(child: Text(widget.superHero.powerstats.intelligence)),
                   ],
                 ),
                 SizedBox(height: heightSpace),
                 Row(
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('strength_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('strength_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(child: Text(widget.superHero.powerstats.strength)),
                   ],
                 ),
                 SizedBox(height: heightSpace),
                 Row(
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('speed_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('speed_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(child: Text(widget.superHero.powerstats.speed)),
                   ],
                 ),
                 SizedBox(height: heightSpace),
                 Row(
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('durability_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('durability_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(child: Text(widget.superHero.powerstats.durability)),
                   ],
                 ),
                 SizedBox(height: heightSpace),
                 Row(
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('power_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('power_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(child: Text(widget.superHero.powerstats.power)),
                   ],
                 ),
                 SizedBox(height: heightSpace),
                 Row(
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('combat_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('combat_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(child: Text(widget.superHero.powerstats.combat)),
                   ],
                 ),
@@ -113,7 +147,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('fullname_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('fullname_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(
                       child: Text(
                         widget.superHero.getFieldOrDefaultValue(
@@ -128,14 +167,24 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('alter_egos_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('alter_egos_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(child: Text(widget.superHero.biography.alterEgos)),
                   ],
                 ),
                 SizedBox(height: heightSpace),
                 Row(
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('aliases_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('aliases_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,7 +200,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('place_birth_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('place_birth_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(child: Text(widget.superHero.biography.placeOfBirth)),
                   ],
                 ),
@@ -159,7 +213,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('first_appearance_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('first_appearance_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(
                       child: Text(
                         widget.superHero.getFieldOrDefaultValue(
@@ -174,7 +233,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('publisher_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('publisher_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(
                       child: Text(
                         widget.superHero.getFieldOrDefaultValue(
@@ -189,7 +253,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('alignment_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('alignment_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(child: Text(widget.superHero.biography.alignment)),
                   ],
                 ),
@@ -207,7 +276,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('gender_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('gender_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(
                       child: Text(
                         widget.superHero.getFieldOrDefaultValue(
@@ -222,14 +296,24 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('race_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('race_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(child: Text(widget.superHero.appearance.race)),
                   ],
                 ),
                 SizedBox(height: heightSpace),
                 Row(
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('height_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('height_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(child: Text(widget.superHero.appearance.height.last)),
                   ],
                 ),
@@ -237,7 +321,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('weight_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('weight_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(child: Text(widget.superHero.appearance.weight.last)),
                   ],
                 ),
@@ -245,7 +334,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('eye_color_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('eye_color_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(
                       child: Text(
                         widget.superHero.getFieldOrDefaultValue(
@@ -260,7 +354,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('hair_color_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('hair_color_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(
                       child: Text(
                         widget.superHero.getFieldOrDefaultValue(
@@ -285,7 +384,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('occupation_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('occupation_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(
                       child: Text(
                         widget.superHero.getFieldOrDefaultValue(
@@ -300,7 +404,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('base_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('base_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(
                       child: Text(
                         widget.superHero.getFieldOrDefaultValue(
@@ -325,7 +434,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('group_affiliation_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('group_affiliation_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(
                       child: Text(
                         widget.superHero.getFieldOrDefaultValue(
@@ -340,7 +454,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Text(_locale.getString('relatives_label'))),
+                    Expanded(
+                        child: Text(
+                      _locale.getString('relatives_label'),
+                      style:
+                          Theme.of(context).textTheme.caption.copyWith(fontWeight: FontWeight.bold),
+                    )),
                     Expanded(
                       child: Text(
                         widget.superHero.getFieldOrDefaultValue(
