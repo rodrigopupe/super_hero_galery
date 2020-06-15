@@ -5,12 +5,14 @@ class CustomCachedNetworkImage extends StatelessWidget {
   final String imageUrl;
   final double width;
   final double height;
+  final BoxFit fit;
 
   const CustomCachedNetworkImage({
     Key key,
     this.imageUrl,
     this.width,
     this.height,
+    this.fit,
   }) : super(key: key);
 
   @override
@@ -20,6 +22,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
       height: this.height,
       placeholder: (_, __) => Icon(Icons.image),
       imageUrl: this.imageUrl,
+      fit: this.fit,
       errorWidget: (_, __, ___) => Icon(
         Icons.error,
         color: Theme.of(context).errorColor,
