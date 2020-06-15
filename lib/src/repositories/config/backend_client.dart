@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:superherogalery/src/repositories/config/backend_config.dart';
+
+import 'backend_config.dart';
 
 class BackendClient {
   final Dio handler = Dio();

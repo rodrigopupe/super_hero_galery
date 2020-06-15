@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:superherogalery/i18n/app_locale.dart';
-import 'package:superherogalery/src/models/super_hero_model.dart';
-import 'package:superherogalery/src/shared/custom_cached_network_image.dart';
+import '../../../i18n/app_locale.dart';
+import '../../../src/models/super_hero_model.dart';
+import '../../../src/shared/custom_cached_network_image.dart';
 
 class DetailsPage extends StatefulWidget {
   final SuperHeroModel superHero;

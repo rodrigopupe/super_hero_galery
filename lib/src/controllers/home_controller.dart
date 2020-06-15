@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:superherogalery/src/models/super_hero_model.dart';
+import '../models/super_hero_model.dart';
 import '../repositories/contracts/super_hero_repository.dart';
 
 part 'home_controller.g.dart';
@@ -14,11 +14,11 @@ abstract class _HomeControllerBase with Store {
     getSuperHeroes();
   }
 
+  @computed
+  String get superHeroesCount => "${superHeroList.length}/$_listSize";
+
   @observable
   ObservableList<SuperHeroModel> superHeroList = <SuperHeroModel>[].asObservable();
-
-  @computed
-  bool get busy => superHeroList.length < _listSize;
 
   @computed
   List<SuperHeroModel> get filteredList {
@@ -41,11 +41,18 @@ abstract class _HomeControllerBase with Store {
   }
 
   @observable
+  bool busy = false;
+
+  @observable
   String filter = '';
+
+  @action
+  updateBusy(bool value) => busy = value;
 
   @action
   getSuperHeroes() async {
     superHeroList.clear();
+    updateBusy(true);
     try {
       for (var i = 1; i <= _listSize; i++) {
         final superHero = await _repository.getSuperHeroes(i);
@@ -53,6 +60,8 @@ abstract class _HomeControllerBase with Store {
       }
     } on Exception catch (e) {
       print(e);
+    } finally {
+      updateBusy(false);
     }
   }
 

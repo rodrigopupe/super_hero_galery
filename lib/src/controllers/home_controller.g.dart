@@ -9,11 +9,12 @@ part of 'home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeController on _HomeControllerBase, Store {
-  Computed<bool> _$busyComputed;
+  Computed<String> _$superHeroesCountComputed;
 
   @override
-  bool get busy => (_$busyComputed ??=
-          Computed<bool>(() => super.busy, name: '_HomeControllerBase.busy'))
+  String get superHeroesCount => (_$superHeroesCountComputed ??=
+          Computed<String>(() => super.superHeroesCount,
+              name: '_HomeControllerBase.superHeroesCount'))
       .value;
   Computed<List<SuperHeroModel>> _$filteredListComputed;
 
@@ -35,6 +36,21 @@ mixin _$HomeController on _HomeControllerBase, Store {
   set superHeroList(ObservableList<SuperHeroModel> value) {
     _$superHeroListAtom.reportWrite(value, super.superHeroList, () {
       super.superHeroList = value;
+    });
+  }
+
+  final _$busyAtom = Atom(name: '_HomeControllerBase.busy');
+
+  @override
+  bool get busy {
+    _$busyAtom.reportRead();
+    return super.busy;
+  }
+
+  @override
+  set busy(bool value) {
+    _$busyAtom.reportWrite(value, super.busy, () {
+      super.busy = value;
     });
   }
 
@@ -65,6 +81,17 @@ mixin _$HomeController on _HomeControllerBase, Store {
       ActionController(name: '_HomeControllerBase');
 
   @override
+  dynamic updateBusy(bool value) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.updateBusy');
+    try {
+      return super.updateBusy(value);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic updateFilter(String value) {
     final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
         name: '_HomeControllerBase.updateFilter');
@@ -79,8 +106,9 @@ mixin _$HomeController on _HomeControllerBase, Store {
   String toString() {
     return '''
 superHeroList: ${superHeroList},
-filter: ${filter},
 busy: ${busy},
+filter: ${filter},
+superHeroesCount: ${superHeroesCount},
 filteredList: ${filteredList}
     ''';
   }
