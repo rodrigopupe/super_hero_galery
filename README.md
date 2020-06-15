@@ -17,7 +17,7 @@ A gallery to show everything about all the super heroes.
 
 ## ScreenShots
 
-<img src="readme/Screenshot_1.png" width="200" height="400" /> <img src="readme/Screenshot_2.png" width="200" height="400" /> <img src="readme/Screenshot_3.png" width="200" height="400" /> <img src="readme/Screenshot_4.png" width="200" height="400" />
+<img src="readme/Screenshot_1.jpg" width="200" height="400" /> <img src="readme/Screenshot_2.jpg" width="200" height="400" /> <img src="readme/Screenshot_3.jpg" width="200" height="400" /> <img src="readme/Screenshot_4.jpg" width="200" height="400" />
 
 <img src="readme/transition_demo.gif" />
 ## TODOs
