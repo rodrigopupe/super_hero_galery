@@ -1,16 +1,26 @@
-# superherogalery
+# Super Hero Galery
 
-A gallery to show everything about all the super heroes
+A gallery to show everything about all the super heroes.
 
-## Getting Started
+*Dependencies: MobX, Provider, Dio (http client) and cached network image.*
 
-This project is a starting point for a Flutter application.
+*Unit tests using **mockito**.*
 
-A few resources to get you started if this is your first Flutter project:
+*SuperHero image animation using Hero widget.*
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Architecture components
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* View (pages);
+* Controller (Store from MobX);
+* Repository (interface and implementation);
+* Models;
+
+## ScreenShots
+
+<img src="readme/Screenshot_1.png" width="200" height="400" /> <img src="readme/Screenshot_2.png" width="200" height="400" /> <img src="readme/Screenshot_3.png" width="200" height="400" /> <img src="readme/Screenshot_4.png" width="200" height="400" />
+
+<img src="readme/transition_demo.gif" />
+## TODOs
+
+* Improve the UI design.
+* Write more unit tests.
