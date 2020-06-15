@@ -26,8 +26,3 @@ The search criteria are: Name, alias or occupation.
 ### PageTransition demo using Hero Widget on the SuperHero image.
 
 <img src="readme/transition_demo.gif" width="200" height="400" />
-
-## TODOs
-
-* Improve the UI design.
-* Write more unit tests.
