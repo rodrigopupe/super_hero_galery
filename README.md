@@ -23,9 +23,9 @@ The search criteria are: Name, alias or occupation.
 
 <img src="readme/Screenshot_1.jpg" width="200" height="400" /> <img src="readme/Screenshot_2.jpg" width="200" height="400" /> <img src="readme/Screenshot_3.jpg" width="200" height="400" /> <img src="readme/Screenshot_4.jpg" width="200" height="400" />
 
-### PageTransition demo using Hero Widget.
+### PageTransition demo using Hero Widget on the SuperHero image.
 
-<center><img src="readme/transition_demo.gif" width="200" height="400" /></center>
+<img src="readme/transition_demo.gif" width="200" height="400" />
 
 ## TODOs
 
