@@ -10,8 +10,6 @@ The search criteria are: Name, alias or occupation.
 
 *Unit tests using **mockito**.*
 
-*SuperHero image animation using Hero widget.*
-
 *Supports **i18n** with English and Portuguese (default).*
 
 ## Architecture components
@@ -25,7 +23,10 @@ The search criteria are: Name, alias or occupation.
 
 <img src="readme/Screenshot_1.jpg" width="200" height="400" /> <img src="readme/Screenshot_2.jpg" width="200" height="400" /> <img src="readme/Screenshot_3.jpg" width="200" height="400" /> <img src="readme/Screenshot_4.jpg" width="200" height="400" />
 
-<img src="readme/transition_demo.gif" width="200" height="400" />
+### PageTransition demo using Hero Widget.
+
+<center><img src="readme/transition_demo.gif" width="200" height="400" /></center>
+
 ## TODOs
 
 * Improve the UI design.
