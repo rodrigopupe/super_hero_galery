@@ -6,7 +6,7 @@ const _BODY_FONT_FAMILY = 'Nunito';
 final textTheme = TextTheme(
   headline1: TextStyle(
       fontFamily: _HEADER_FONT_FAMILY,
-      fontSize: 48,
+      fontSize: 42,
       fontWeight: FontWeight.w300,
       letterSpacing: -1.5),
   headline2: TextStyle(

@@ -1,8 +1,8 @@
 const Map<String, String> PORTUGUESE = {
   'app_title': 'Super Hero Galery',
 
-  'super_heroes_count_label': 'Total de super heróis: <#1>',
-  'search_box_hint': 'Busque o seu favorito...',
+  'super_heroes_count_label': 'Buscando heróis nos multiversos: <#1>',
+  'search_box_hint': 'Nome, apelido ou ocupação',
   'no_super_hero_found': 'Nenhum super herói encontrado',
 
   'not_available_text': '-',
