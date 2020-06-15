@@ -7,7 +7,7 @@ import 'contracts/super_hero_repository.dart';
 class SuperHeroRepositoryImpl extends SuperHeroRepository {
   final Dio client = BackendClient().handler;
   @override
-  Future<SuperHeroModel> getSuperHeroes(int superHeroId) async {
+  Future<SuperHeroModel> getSuperHeroes(String superHeroId) async {
     final path = "/$superHeroId";
     Response response = await client.get(path);
     if (response.statusCode >= 400) {

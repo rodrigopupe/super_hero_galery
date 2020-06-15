@@ -55,8 +55,10 @@ abstract class _HomeControllerBase with Store {
     updateBusy(true);
     try {
       for (var i = 1; i <= _listSize; i++) {
-        final superHero = await _repository.getSuperHeroes(i);
-        superHeroList.add(superHero);
+        final superHero = await _repository.getSuperHeroes("$i");
+        if (superHero != null) {
+          addSuperHeroToList(superHero);
+        }
       }
     } on Exception catch (e) {
       print(e);
@@ -64,6 +66,9 @@ abstract class _HomeControllerBase with Store {
       updateBusy(false);
     }
   }
+
+  @action
+  addSuperHeroToList(SuperHeroModel superHero) => superHeroList.add(superHero);
 
   @action
   updateFilter(String value) => filter = value;
